@@ -1,0 +1,17 @@
+{
+    "name": "UISketchpad",
+    "version": "2.0.0",
+    "description": "Sketchpad offers the abilities of drawing lines with different pencils",
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "appuser@120.24.242.123:Front/UISketchpad.git"
+    },
+    "keywords": [
+        "Sketchpad",
+        "Pencil",
+        "Line"
+    ],
+    "author": "zhangtao",
+    "license": "ISC"
+}

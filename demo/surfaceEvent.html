@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>HTML5 Create HTML5 Canvas JavaScript Drawing App Example</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+    
+    #canvas {
+        margin: 0 auto;
+    }
+</style>
+
+<body>
+    <canvas id="canvas" width="600" height="600" style="border:solid black 1px;"></canvas>
+    <br>
+    <br> Log: <pre id="log" style="border: 1px solid #ccc; font-size:20px;"></pre>
+
+    <script>
+        var ongoingTouches = [];
+
+        function log(msg) {
+            var p = document.getElementById('log');
+            p.innerHTML = msg + "\n" + p.innerHTML;
+        }
+
+        function handleStart(e) {
+            var target = e.changedTouches[0];
+            log([target.clientX, target.pageX].join('-'));
+        }
+
+        function handleMove(e) {
+            var target = e.changedTouches[0];
+            log([target.clientX, target.pageX].join('-'));
+        }
+
+        (function() {
+            var el = document.getElementsByTagName("canvas")[0];
+            el.addEventListener("touchstart", handleStart, false);
+            el.addEventListener("touchmove", handleMove, false);
+        })();
+    </script>
+</body>
+
+</html>

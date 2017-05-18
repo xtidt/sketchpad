@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>HTML5 Create HTML5 Canvas JavaScript Drawing App Example</title>
+    <link rel="stylesheet" href="./css/app.less">
+</head>
+
+<body>
+    <!--工具栏-->
+    <div class="tool" id="tool" v-cloak>
+        <div class="menu">
+            <ul class="col-1 float-left">
+                <i class="{{tools[currentData.tool].icon}}"></i><span>工具:</span>
+            </ul>
+            <ul class="col-2 float-left">
+                <div class="inputfile" @click="selectTool">{{tools[currentData.tool].name}}</div>
+                <ul class="selectMenu" v-show="showToolPlane">
+                    <li v-for="item in tools" @click="pickTool(this)" data-index={{$index}}><span> ● </span>{{item.name}}</li>
+                </ul>
+            </ul>
+            <ul class="col-3 float-left ">
+                <span>颜色：</span>
+            </ul>
+            <ul class="col-4 float-left ">
+                <div class="inputfile " @click="selectColor"><span style="background-color:{{colors[currentData.color]}}"></span></div>
+                <ul class="selectColor " v-show="showColorPlane">
+                    <li v-for="item in colors" @click="pickColor($index)"><span style="background-color:{{item}}">{{item}}</span></li>
+                </ul>
+            </ul>
+            <ul class="col-5 float-left" onclick="app.close()">X 关闭画笔/Esc</ul>
+        </div>
+    </div>
+    <div class="mainbody">
+        <div id="canvasDiv"></div>
+    </div>
+
+    <script type="text/javascript" src="http://play.yunkai.com/static/fis3/mod.js" data-loader></script>
+    <script type="text/javascript" src="http://play.yunkai.com/static/vue/1.0.26/vue.min.js"></script>
+    <script type="text/javascript">
+        var app = require('../lib/UISketchpad');
+
+        var vm = new Vue({
+            el: "#tool",
+            data: {
+                tools: [{
+                    type: 0,
+                    name: "画笔",
+                    icon: "icon-pen"
+                }, {
+                    type: 1,
+                    name: "马克笔",
+                    icon: "icon-mark"
+                }, {
+                    type: 2,
+                    name: "橡皮擦",
+                    icon: "icon-easer"
+                }, {
+                    type: 3,
+                    name: "批注",
+                    icon: "icon-easer"
+                }],
+                colors: [
+                    "red",
+                    "Orange",
+                    "Yellow",
+                    "SpringGreen",
+                    "LightSkyBlue",
+                    "Blue",
+                    "Magenta"
+                ],
+                currentData: {
+                    tool: 0,
+                    color: 0
+                },
+                showToolPlane: false,
+                showColorPlane: false
+            },
+            methods: {
+                selectTool: function() {
+                    this.showToolPlane = true;
+                },
+
+                selectColor: function() {
+                    this.showColorPlane = true;
+                },
+
+                pickTool: function(dom) {
+                    this.currentData.tool = dom.item.type;
+                    this.showToolPlane = false;
+                    app.changeTool(dom.item.type);
+                },
+
+                pickColor: function(index) {
+                    this.currentData.color = index;
+                    this.showColorPlane = false;
+                    app.changeColor(this.colors[index]);
+                },
+            }
+        });
+
+
+        app.init({
+            container: 'canvasDiv',
+            onEvent: {
+                open: function() {
+                    console.log('open');
+                },
+                close: function() {
+                    console.log('close');
+                },
+                addOne: function() {
+                    console.log('addOne');
+                },
+                delOne: function(index) {
+                    console.log('delOne:' + index);
+                },
+                delAll: function() {
+                    console.log('delAll');
+                },
+                selectColor: function() {
+                    console.log('selectColor');
+                },
+                selectTool: function() {
+                    console.log('selectTool');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

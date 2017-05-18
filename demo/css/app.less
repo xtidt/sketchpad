@@ -1,0 +1,214 @@
+@fontcolor: #f00;
+body,
+.mainbody {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: url('../images/bg_1920x1080.jpg');
+}
+
+.tool {
+    height: 40px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .3);
+    z-index: 10;
+    .menu {
+        width: 400px;
+        height: auto;
+        float: right;
+        font-size: 14px;
+        font-family: "微软雅黑";
+        color: #fff;
+        padding-top: 12px;
+        &>ul {
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+        }
+        span {
+            position: relative;
+            margin-left: 4px;
+            top: -2px;
+        }
+        .col-2,
+        .col-4 {
+            position: relative;
+            &:after {
+                content: '|';
+                position: absolute;
+                right: 5px;
+                top: 0;
+                color: #000;
+            }
+        }
+        .col-1 {
+            width: 70px;
+            height: auto;
+        }
+        .col-2 {
+            width: 86px;
+            height: auto;
+            li {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+        }
+        .col-3 {
+            width: 50px;
+        }
+        .col-4 {
+            width: 60px;
+        }
+        .col-5 {
+            width: 100px;
+        }
+        .float-left {
+            float: left;
+        }
+        .inputfile {
+            height: 24px;
+            position: relative;
+            &:after {
+                content: "▼";
+                position: absolute;
+                right: 15px;
+            }
+            span {
+                width: 20px;
+                height: 20px;
+                display: inline-block;
+            }
+        }
+        .selectMenu {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            border: 1px solid #c0c0c0;
+            border-radius: 2px;
+            overflow: hidden;
+            color: #000;
+            span {
+                padding-right: 10px;
+            }
+            li {
+                height: 24px;
+                background: #fff;
+                padding: 2px;
+                &:hover {
+                    background: #ddd;
+                }
+            }
+        }
+        .selectColor {
+            margin: 0;
+            padding: 0;
+            li {
+                list-style: none;
+                span {
+                    width: 20px;
+                    height: 20px;
+                    background: #ff0;
+                    display: inline-block;
+                    margin-bottom: 3px;
+                    text-indent: 20em;
+                }
+            }
+        }
+    }
+    .mainbody {
+        width: 100%;
+        height: 100%;
+        background-image: url('bg_1920x1080.jpg');
+        background-size: cover;
+    }
+    .plane {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        width: 100px;
+        height: 30px;
+        border: 1px solid #c5c5c5;
+    }
+    .color-block {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+    }
+}
+
+.icon-pen,
+.icon-mark,
+.icon-easer {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+.icon-pen {
+    background-image: url('../images/app/icon-mark-p1.png');
+}
+
+.icon-mark {
+    background-image: url('../images/app/icon-mark-p2.png');
+}
+
+.icon-easer {
+    background-image: url('../images/app/icon-mark-p3.png');
+}
+
+[v-cloak] {
+  display: none;
+}
+
+#canvasDiv {
+    min-height: 900px; width:100%; border:1px solid #ff0; margin:0 auto;
+    position: relative;
+}
+
+//添加批注
+.remarks {
+    position:absolute;
+    left:0px;
+    top:-100px;
+    width:0px;
+    height:0px;
+    border: 1px dashed #cacaca;
+
+    .ok_btn,.cancel_btn {
+        width:20px;
+        height:20px;
+        background-size: cover;
+        position:absolute;
+        top: -23px;
+        cursor: pointer;
+    }
+    .ok_btn
+    {
+        right: 23px;
+        background-image:url('../images/app/ok.png');
+    }
+
+    .cancel_btn {
+        right: 0px;
+        background-image:url('../images/app/cancel.png');
+    }
+
+    .textarea,#textareaId {
+        background:transparent;
+        border:none;
+        width:100%;
+        height:100%;
+        font-family: "微软雅黑";
+        font-size:24px;
+        color:@fontcolor;
+        outline:none;
+    }
+
+    .hidden {
+        display: none;
+    }
+}
