@@ -1,6 +1,6 @@
 - install fis3
 
--run server
+- run server
 `fis3 server start`
 
 - release
